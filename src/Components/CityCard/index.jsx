@@ -9,6 +9,10 @@ import {
 const CityCard = () => {
   const cities = ["Cairo", "Alex", "Suez", "Mansoura", "Monofia"];
 
+  const handleCityClick = () => {
+    console.log("City Card Clicked");
+  }
+
   return (
     <div className="p-4 sm:p-6 lg:p-8 w-full max-w-3xl mx-auto rounded-xl bg-blue-300">
       <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold bg-yellow-200 p-2 rounded-t-xl">
@@ -21,7 +25,8 @@ const CityCard = () => {
         {cities.map((city, index) => (
           <div
             key={index}
-            className="flex flex-col sm:flex-row p-3 bg-purple-400 rounded-lg shadow-md">
+            className="flex flex-col sm:flex-row p-3 bg-purple-400 rounded-lg shadow-md cursor-pointer"
+            onClick={handleCityClick}>
             <div className="bg-orange-300 p-2 w-full sm:w-1/4 text-start">
               <p className="font-bold text-sm sm:text-base lg:text-lg">
                 {city}

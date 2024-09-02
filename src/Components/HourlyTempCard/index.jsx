@@ -5,7 +5,7 @@ const HourlyTempCard = () => {
   const hours = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 rounded-xl bg-blue-300 max-w-full mx-auto">
+    <div className="p-4 sm:p-6 lg:p-8 rounded-xl bg-blue-300 max-w-full mx-auto cursor-move">
       <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold bg-yellow-200 p-2 rounded-t-xl">
         Today's Forecast
       </h2>
