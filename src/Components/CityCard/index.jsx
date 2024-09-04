@@ -7,53 +7,39 @@ import {
 } from "react-icons/fa6";
 
 const CityCard = () => {
-  const cities = ["Cairo", "Alex", "Suez", "Mansoura", "Monofia"];
-
-  const handleCityClick = () => {
-    console.log("City Card Clicked");
-  }
+  const cities = ["Cairo", "Giza", "Alexandria", "Suez", "Mansoura"];
 
   return (
-    <div className="p-4 sm:p-6 lg:p-8 w-full max-w-3xl mx-auto rounded-xl bg-blue-300">
-      <h2 className="text-lg sm:text-xl lg:text-2xl font-semibold bg-yellow-200 p-2 rounded-t-xl">
+    <div className="bg-white/40 backdrop-blur-lg border border-white/60 rounded-xl p-2">
+      <h2 className="text-lg font-semibold p-2 rounded-t-xl">
         Cities Forecast
       </h2>
 
-      <hr className="h-1 bg-black rounded-full my-2" />
+      <hr className="h-1 rounded-full" />
 
-      <div className="flex flex-col gap-4">
-        {cities.map((city, index) => (
+      <div className="flex flex-col gap-2 mt-2">
+        {cities.map((city) => (
           <div
-            key={index}
-            className="flex flex-col sm:flex-row p-3 bg-purple-400 rounded-lg shadow-md cursor-pointer"
-            onClick={handleCityClick}>
-            <div className="bg-orange-300 p-2 w-full sm:w-1/4 text-start">
-              <p className="font-bold text-sm sm:text-base lg:text-lg">
-                {city}
-              </p>
-            </div>
-
-            <div className="flex-1 bg-gray-300 p-2 flex flex-col sm:flex-row items-center justify-between gap-2 sm:gap-4">
-              <div className="flex items-center gap-2">
-                <TiWeatherDownpour className="text-lg sm:text-xl lg:text-2xl" />
-                &nbsp;&nbsp;&nbsp;
-                <p className="text-xs sm:text-sm lg:text-base">H</p>
-                <div className="flex items-center text-xs sm:text-sm lg:text-base">
+            key={city}
+            className="flex justify-evenly items-center p-2 bg-white/5 backdrop-blur-lg border border-white/10 shadow-sm rounded-lg">
+            <div className="flex flex-wrap justify-between w-full">
+              <p>{city}</p>
+              <div className="flex items-center w-full justify-evenly sm:w-3/4">
+                <TiWeatherDownpour className="text-2xl mr-2" />
+                <div className="flex items-center gap-1">
+                  <p>H</p>
                   <FaTemperatureArrowUp />
-                  <p className="px-1">42°</p>
+                  <p>43°</p>
                 </div>
-                &nbsp;&nbsp;&nbsp;
-                <p className="text-xs sm:text-sm lg:text-base">L</p>
-                <div className="flex items-center text-xs sm:text-sm lg:text-base">
+                <p className="p-1">-</p>
+                <div className="flex items-center gap-1">
+                  <p>L</p>
                   <FaTemperatureArrowDown />
-                  <p className="px-1">42°</p>
+                  <p>42°</p>
                 </div>
-              </div>
-
-              <div className="flex items-center ml-auto mt-2 sm:mt-0">
-                <button className="text-white text-xs sm:text-sm lg:text-base">
+                <div>
                   <FaAngleRight />
-                </button>
+                </div>
               </div>
             </div>
           </div>
