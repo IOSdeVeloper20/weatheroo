@@ -10,7 +10,7 @@ const CityCard = () => {
   const cities = ["Cairo", "Giza", "Alexandria", "Suez", "Mansoura"];
 
   return (
-    <div className="bg-white/40 backdrop-blur-lg border border-white/60 rounded-xl p-2">
+    <div className="bg-white/20 backdrop-blur-lg border border-white/60 rounded-xl p-2">
       <h2 className="text-lg font-semibold p-2 rounded-t-xl">
         Cities Forecast
       </h2>
@@ -28,13 +28,13 @@ const CityCard = () => {
                 <TiWeatherDownpour className="text-2xl mr-2" />
                 <div className="flex items-center gap-1">
                   <p>H</p>
-                  <FaTemperatureArrowUp />
+                  <FaTemperatureArrowUp className="text-orange-500"/>
                   <p>43°</p>
                 </div>
                 <p className="p-1">-</p>
                 <div className="flex items-center gap-1">
                   <p>L</p>
-                  <FaTemperatureArrowDown />
+                  <FaTemperatureArrowDown className="text-blue-500"/>
                   <p>42°</p>
                 </div>
                 <div>

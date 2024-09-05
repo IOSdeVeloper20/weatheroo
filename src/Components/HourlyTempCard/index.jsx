@@ -8,7 +8,7 @@ const HourlyTempCard = () => {
   ];
 
   return (
-    <div className="rounded-xl p-2 bg-white/40 backdrop-blur-lg border border-white/60 cursor-move">
+    <div className="rounded-xl p-2 bg-white/20 backdrop-blur-lg border border-white/60 cursor-move">
       <h2 className="text-center sm:text-start text-lg font-semibold p-2">
         Today's Forecast
       </h2>
@@ -20,7 +20,7 @@ const HourlyTempCard = () => {
           {hours.map((hour) => (
             <div
               key={hour}
-              className="flex flex-col justify-center items-center py-3 px-4 gap-2 bg-white/10 backdrop-blur-lg border border-white/10 rounded-lg">
+              className="flex flex-col justify-center items-center py-3 px-4 gap-2 bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl">
               <p className="min-w-11">
                 {hour} <span className="text-sm">PM</span>
               </p>

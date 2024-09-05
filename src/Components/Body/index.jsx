@@ -6,7 +6,7 @@ import { FiSunrise, FiSunset } from "react-icons/fi";
 
 const Body = () => {
   return (
-    <div className="flex flex-col justify-center items-center p-2 gap-4 bg-white/40 backdrop-blur-lg border border-white/60 rounded-xl">
+    <div className="flex flex-col justify-center items-center p-2 gap-4 bg-white/20 backdrop-blur-lg border border-white/60 rounded-xl">
       <div className="flex items-center gap-2">
         <MdOutlineLocationOn />
         <p>Cairo, Egypt</p>

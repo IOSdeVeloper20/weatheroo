@@ -9,7 +9,7 @@ import ShortData from "../Components/ShortData";
 
 const Landing = () => {
   return (
-    <div className="flex flex-col items-center gap-6 p-4 bg-gradient-to-r from-cyan-500 to-blue-500 ">
+    <div className="flex flex-col items-center gap-6 p-4 ">
       <Header />
 
       <div className="w-full">
@@ -26,7 +26,9 @@ const Landing = () => {
         </div>
 
         <div className="w-full sm:w-1/2">
-          <div className="mb-3"><ShortData/></div>
+          <div className="mb-3">
+            <ShortData />
+          </div>
           <div>
             <CityCard />
           </div>
@@ -38,9 +40,7 @@ const Landing = () => {
       </h1>
 
       <button className="bg-pink-500 text-white rounded-full p-4 hover:bg-pink-600 transition-colors duration-300 mt-4">
-        <Link to="/dashboard" className="no-underline">
-          Go to Dashboard
-        </Link>
+        <Link to="/dashboard">Go to Dashboard</Link>
       </button>
     </div>
   );

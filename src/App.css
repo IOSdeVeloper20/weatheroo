@@ -4,4 +4,7 @@
 
 .App {
   text-align: center;
+  background-image: url(./clear.jpg);
+  background-position: cover;
+  background-repeat: no-repeat;
 }

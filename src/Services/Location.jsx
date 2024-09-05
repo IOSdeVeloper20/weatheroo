@@ -1,13 +1,18 @@
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import { fetchData } from "../Helpers/Networking";
+import { locationContext } from "../Contexts/LocationProvider";
 
-const Location = ({setLocation}) => {
+// return the location (country name, country code)
+const Location = () => {
+  const { setLocation } = useContext(locationContext);
+
   useEffect(() => {
     const fetchLocation = async () => {
       try {
-        const location = await fetchData("https://ipapi.co/json");
-        console.log("location data in location.jsx:", location);
-        setLocation(location);
+        const locationData = await fetchData("https://ipapi.co/json");
+        setLocation(locationData);
+
+        console.log("location data in location file:", locationData);
       } catch (error) {
         console.error("Error while getting location:", error);
       }
@@ -18,3 +23,17 @@ const Location = ({setLocation}) => {
 };
 
 export default Location;
+
+// useEffect(() => {
+//   const fetchLocation = async () => {
+//     try {
+//       const location = await fetchData("https://ipapi.co/json");
+//       console.log("location data in location.jsx:", location);
+//       setLocation(location);
+//     } catch (error) {
+//       console.error("Error while getting location:", error);
+//     }
+//   };
+//   fetchLocation();
+// }, [setLocation]);
+// return null;
