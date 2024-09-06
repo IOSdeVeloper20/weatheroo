@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { MdOutlineLocationOn } from "react-icons/md";
-// import { TiWeatherDownpour } from "react-icons/ti";
 import { FaTemperatureLow, FaTemperatureHigh } from "react-icons/fa";
 import { FiSunrise, FiSunset } from "react-icons/fi";
 import { locationContext } from "../../Contexts/LocationProvider";
@@ -18,8 +17,11 @@ const Body = () => {
           {location.city}, {location.country_name}
         </p>
       </div>
-      {/* <TiWeatherDownpour className="text-7xl bg-white/10 backdrop-blur-lg border border-white/10 p-1 rounded-full" /> */}
-      <img src={weather.data.current_condition[0].weatherIconUrl[0].value} alt="condition" className="rounded-xl text-xl" />
+      <img
+        src={weather.data.current_condition[0].weatherIconUrl[0].value}
+        alt="condition"
+        className="rounded-xl"
+      />
 
       <h3 className="text-3xl m-4">
         {weather.data.current_condition[0].weatherDesc[0].value}

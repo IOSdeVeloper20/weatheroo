@@ -1,10 +1,14 @@
-import React, { useContext } from "react";
-import { SlCalender } from "react-icons/sl";
-import { AiOutlineClockCircle } from "react-icons/ai";
-import { weatherContext } from "../../Contexts/WeatherProvider";
+// import React, { useContext } from "react";
+// import { BsFillCalendarDateFill } from "react-icons/bs";
+import { IoMdClock } from "react-icons/io";
+// import { weatherContext } from "../../Contexts/WeatherProvider";
+import { getCurrentDayAndTime } from "../../Helpers/Date";
 
 const Header = () => {
-  const { weather } = useContext(weatherContext);
+  // const { weather } = useContext(weatherContext);
+
+  const locale = "en-US";
+  const { dayOfTheWeek, time } = getCurrentDayAndTime(locale);
 
   return (
     <div className="flex flex-col sm:flex-row justify-between items-center w-full text-white">
@@ -13,15 +17,16 @@ const Header = () => {
       </div>
 
       <div className="flex items-center gap-2">
-        <AiOutlineClockCircle />
-        <p>Local Time: 3:08 AM</p>
+        <IoMdClock className="text-gray-200" />
+        <p>
+          {dayOfTheWeek} {time}
+        </p>
       </div>
 
-      <div className="flex items-center gap-1">
+      {/* <div className="flex items-center gap-2">
         <p>{weather.data.weather[0].date}</p>
-        <SlCalender />
-      </div>
-
+        <BsFillCalendarDateFill className="text-gray-200"/>
+      </div> */}
     </div>
   );
 };

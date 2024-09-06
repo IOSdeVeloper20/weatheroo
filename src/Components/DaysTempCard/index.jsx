@@ -1,9 +1,11 @@
-import React from "react";
-import { TiWeatherDownpour } from "react-icons/ti";
+import React, { useContext } from "react";
 import { FaTemperatureArrowDown, FaTemperatureArrowUp } from "react-icons/fa6";
+import { weatherContext } from "../../Contexts/WeatherProvider";
+import { getDayName } from "../../Helpers/Date";
 
 const DaysTempCard = () => {
-  const days = ["Today", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"];
+  const { weather } = useContext(weatherContext);
+  const days = weather.data.weather;
 
   return (
     <div className="rounded-xl bg-white/20 backdrop-blur-lg border border-white/60 p-2">
@@ -19,19 +21,23 @@ const DaysTempCard = () => {
             key={day}
             className="flex justify-evenly items-center p-2 bg-white/5 backdrop-blur-lg border border-white/10 shadow-sm rounded-lg">
             <div className="flex flex-wrap justify-between w-full">
-              <p>{day}</p>
+              <p>{getDayName(day.date, "en-US")}</p>
               <div className="flex items-center w-full justify-evenly sm:w-3/4">
-                <TiWeatherDownpour className="text-2xl mr-2" />
+                <img
+                  src={day.hourly[0].weatherIconUrl[0].value}
+                  alt="Daily Conditions"
+                  className="rounded-full size-8"
+                />
                 <div className="flex items-center gap-1">
                   <p>H</p>
-                  <FaTemperatureArrowUp className="text-orange-500"/>
-                  <p>43°</p>
+                  <FaTemperatureArrowUp className="text-orange-500" />
+                  <p>{day.maxtempC}°</p>
                 </div>
                 <p className="p-1">-</p>
                 <div className="flex items-center gap-1">
                   <p>L</p>
-                  <FaTemperatureArrowDown className="text-blue-500"/>
-                  <p>42°</p>
+                  <FaTemperatureArrowDown className="text-blue-500" />
+                  <p>{day.mintempC}°</p>
                 </div>
               </div>
             </div>
