@@ -1,7 +1,9 @@
-import React from "react";
-import { TiWeatherDownpour } from "react-icons/ti";
+import React, { useContext } from "react";
+// import { TiWeatherDownpour } from "react-icons/ti";
+import { weatherContext } from "../../Contexts/WeatherProvider";
 
 const HourlyTempCard = () => {
+  const { weather } = useContext(weatherContext);
   const hours = [
     1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21,
     22, 23, 24,
@@ -24,8 +26,9 @@ const HourlyTempCard = () => {
               <p className="min-w-11">
                 {hour} <span className="text-sm">PM</span>
               </p>
-              <TiWeatherDownpour className="text-3xl" />
-              <p>42°</p>
+              {/* <TiWeatherDownpour className="text-3xl" /> */}
+              <img src={weather.data.weather[0].hourly[0].weatherIconUrl[0].value} alt="hourly condition" className="rounded-full"/>
+              <p>{weather.data.weather[0].hourly[0].tempC}°</p>
             </div>
           ))}
         </div>

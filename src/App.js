@@ -20,10 +20,10 @@ function App() {
               <Route path="/" element={<Landing />} />
               <Route path="/dashboard" element={<Dashboard />} />
             </Routes>
-            <Location />
-            <Weather />
-            <Cities />
           </Router>
+          <Location />
+          <Weather />
+          <Cities />
         </CitiesProvider>
       </WeatherProvider>
     </LocationProvider>
