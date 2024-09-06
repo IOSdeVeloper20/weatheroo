@@ -19,7 +19,7 @@ const Body = () => {
         </p>
       </div>
       {/* <TiWeatherDownpour className="text-7xl bg-white/10 backdrop-blur-lg border border-white/10 p-1 rounded-full" /> */}
-      <img src={weather.data.current_condition[0].weatherIconUrl[0].value} alt="condition" className="rounded-full text-xl" />
+      <img src={weather.data.current_condition[0].weatherIconUrl[0].value} alt="condition" className="rounded-xl text-xl" />
 
       <h3 className="text-3xl m-4">
         {weather.data.current_condition[0].weatherDesc[0].value}
