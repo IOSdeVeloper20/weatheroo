@@ -3,18 +3,18 @@ import React, { useRef, useState, useEffect } from "react";
 
 const LineChart = () => {
   const svgRef = useRef();
-  const [data, setData] = useState("");
-  
+  const [data, setData] = useState([
+    0, 70, 45, 60, 90, 44, 60, 32, 80, 40, 100,
+  ]);
 
   useEffect(() => {
-    setData([0, 70, 45, 60, 90, 44, 60, 32, 80, 40, 100,]);
     //select the svg using the ref hook.
     const width = 500;
     const height = 250;
     const svg = d3
       .select(svgRef.current)
-      .attr("width", width)
-      .attr("height", height)
+      .attr("width", "100%")
+      .attr("height", "100%")
       .style("overflow", "visible");
     //   .style("background", "#ded6d5");
 
@@ -24,8 +24,9 @@ const LineChart = () => {
       .scaleLinear()
       .domain([0, data.length - 1])
       .range([0, width]);
+
     //yscales
-    const yScale = d3.scaleLinear().domain([0, height]).range([height, 0]);
+    const yScale = d3.scaleLinear().domain([0, d3.max(data)]).range([height, 0]);
 
     //draw Lines
     const generateScaledLine = d3
@@ -41,7 +42,7 @@ const LineChart = () => {
       .ticks(1 + data.length)
       //to make the x axis begin from number 1 not 0
       .tickFormat((i) => i + 1);
-    const yAxis = d3.axisLeft(yScale).ticks(7);
+    const yAxis = d3.axisLeft(yScale).ticks(7).tickFormat((d) => d + "°");
     // drawing the axes on the svg
     svg.append("g").call(xAxis).attr("transform", `translate(0,${height})`);
     svg.append("g").call(yAxis);
@@ -55,6 +56,21 @@ const LineChart = () => {
       .attr("fill", "none")
       .attr("stroke", "black")
       .attr("stroke-width", 3);
+
+
+      //recalculates the width and height based on the current SVG element dimensions
+      // and updates the scales and axes accordingly.
+      const resizeHandler = () => {
+        const width = svgRef.current.clientWidth;
+        const height = svgRef.current.clientHieght;
+
+        xScale.range([0, width]);
+        yScale.range([height, 0]);
+      }
+
+      window.addEventListener('resize', resizeHandler);
+      resizeHandler();
+
   }, [data]);
 
   return (

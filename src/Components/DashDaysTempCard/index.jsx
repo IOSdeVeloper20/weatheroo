@@ -1,16 +1,10 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FaTemperatureArrowDown, FaTemperatureArrowUp } from "react-icons/fa6";
-import { weatherContext } from "../../Contexts/WeatherProvider";
 import { getDayName } from "../../Helpers/Date";
 
-const DaysTempCard = () => {
-  const { weather } = useContext(weatherContext);
+const DashDaysTempCard = ({ weather }) => {
   const days = weather.data.weather;
 
-  if (!weather || !weather.data || !weather.data.weather) {
-    return <div>Loading...</div>;
-  }
-  
   return (
     <div className="rounded-xl bg-white/20 backdrop-blur-lg border border-white/60 p-2">
       <h2 className="text-lg font-semibold p-2 rounded-t-xl">
@@ -52,4 +46,4 @@ const DaysTempCard = () => {
   );
 };
 
-export default DaysTempCard;
+export default DashDaysTempCard;

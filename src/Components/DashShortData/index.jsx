@@ -1,15 +1,9 @@
-import React, { useContext } from "react";
+import React from "react";
 import { FaWind } from "react-icons/fa";
 import { CiTempHigh } from "react-icons/ci";
 import { WiHumidity } from "react-icons/wi";
-import { weatherContext } from "../../Contexts/WeatherProvider";
 
-const ShortData = () => {
-  const { weather } = useContext(weatherContext);
-
-  if (!weather || !weather.data || !weather.data.current_condition) {
-    return <div>Loading...</div>;
-  }
+const DashShortData = ({weather}) => {
 
   return (
     <div className="rounded-xl bg-white/20 backdrop-blur-lg border border-white/60 p-2">
@@ -42,4 +36,4 @@ const ShortData = () => {
   );
 };
 
-export default ShortData;
+export default DashShortData;

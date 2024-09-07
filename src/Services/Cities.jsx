@@ -17,8 +17,6 @@ const Cities = () => {
           const citiesURL = `${citiesBaseURL}${location.country}`;
           const citiesData = await fetchData(citiesURL);
           setCities(citiesData);
-
-          console.log("Cities:", citiesData);
         } else {
           return "Error, location not available!";
         }

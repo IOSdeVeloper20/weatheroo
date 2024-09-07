@@ -17,9 +17,7 @@ const Weather = () => {
           const weatherURL = `${baseURL}${location.country_name}`;
           const weatherData = await fetchData(weatherURL);
           setWeather(weatherData);
-          console.log("weather data from weather file:", weatherData);
         } else {
-          console.log("Error, location not available!");
         }
       } catch (error) {
         console.error("Error while fetching weather:", error);

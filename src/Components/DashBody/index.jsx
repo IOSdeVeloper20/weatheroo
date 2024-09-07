@@ -1,24 +1,20 @@
-import React, { useContext } from "react";
+import React from "react";
 import { MdOutlineLocationOn } from "react-icons/md";
 import { FaTemperatureLow, FaTemperatureHigh } from "react-icons/fa";
 import { FiSunrise, FiSunset } from "react-icons/fi";
-import { locationContext } from "../../Contexts/LocationProvider";
-import { weatherContext } from "../../Contexts/WeatherProvider";
 
-const Body = () => {
-  const { location } = useContext(locationContext);
-  const { weather } = useContext(weatherContext);
 
-  if (!weather || !weather.data || !weather.data.current_condition || !weather.data.weather) {
-    return <div>Loading...</div>;
-  }
+const DashBody = ({weather, name}) => {
+
+
+  
   
   return (
     <div className="flex flex-col justify-center items-center p-2 gap-4 bg-white/20 backdrop-blur-lg border border-white/60 rounded-xl">
       <div className="flex items-center gap-2">
         <MdOutlineLocationOn />
         <p>
-          {location.city}, {location.country_name}
+          {name}
         </p>
       </div>
       <img
@@ -58,4 +54,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default DashBody;

@@ -3,6 +3,7 @@ import { citiesContext } from "../../Contexts/CitiesProvider";
 import { FaTemperatureArrowDown, FaTemperatureArrowUp } from "react-icons/fa6";
 import { FaAngleRight } from "react-icons/fa6";
 import { fetchCityWeatherData } from "../../Helpers/Networking";
+import { Link } from "react-router-dom";
 
 const CityCard = () => {
   const [latitude, setLatitude] = useState([]);
@@ -60,13 +61,22 @@ const CityCard = () => {
           const cityWeather = cityWeatherState[index];
           if (cityWeather) {
             return (
-              <div
+              <Link
+                to="/Dashboard"
+                state={{cityWeather, cityName: city.name}}
                 key={index}
                 className="flex justify-evenly items-center p-2 bg-white/5 backdrop-blur-lg border border-white/10 shadow-sm rounded-lg">
                 <div className="flex flex-wrap justify-between w-full">
                   <p>{city.name}</p>
                   <div className="flex items-center w-full justify-evenly sm:w-3/4">
-                  <img src={cityWeather.data.weather[0].hourly[0].weatherIconUrl[0].value} alt="conditon img" className="rounded-full size-8"/>
+                    <img
+                      src={
+                        cityWeather.data.weather[0].hourly[0].weatherIconUrl[0]
+                          .value
+                      }
+                      alt="conditon img"
+                      className="rounded-full size-8"
+                    />
                     <div className="flex items-center gap-1">
                       <p>H</p>
                       <FaTemperatureArrowUp className="text-orange-500" />
@@ -83,9 +93,11 @@ const CityCard = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </Link>
             );
-          } else {return null;}
+          } else {
+            return null;
+          }
         })}
       </div>
     </div>

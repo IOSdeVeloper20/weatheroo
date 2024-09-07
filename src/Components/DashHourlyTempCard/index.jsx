@@ -1,13 +1,7 @@
-import React, { useContext } from "react";
-import { weatherContext } from "../../Contexts/WeatherProvider";
+import React from "react";
 
-const HourlyTempCard = () => {
-  const { weather } = useContext(weatherContext);
+const DashHourlyTempCard = ({ weather }) => {
   const hours = weather.data.weather[0].hourly;
-
-  if (!weather) {
-    return <div>Loading...</div>;
-  }
 
   return (
     <div className="rounded-xl p-2 bg-white/20 backdrop-blur-lg border border-white/60 cursor-move">
@@ -40,4 +34,4 @@ const HourlyTempCard = () => {
   );
 };
 
-export default HourlyTempCard;
+export default DashHourlyTempCard;

@@ -1,49 +1,50 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import Header from "../Components/Header";
-import Body from "../Components/Body";
-import HourlyTempCard from "../Components/HourlyTempCard";
-import DaysTempCard from "../Components/DaysTempCard";
-import ShortData from "../Components/ShortData";
+import DashHourlyTempCard from "../Components/DashHourlyTempCard";
+import DashDaysTempCard from "../Components/DashDaysTempCard";
+import DashShortData from "../Components/DashShortData";
 import LineChart from "../Components/LineChart";
+import DashBody from "../Components/DashBody";
 
-const Landing = () => {
+const Dashboard = () => {
+  const cityNameLocation = useLocation();
+  const { cityName, cityWeather } = cityNameLocation.state || {};
+
   return (
     <div className="flex flex-col items-center gap-6 p-4">
-      <Header />
+      {cityWeather && <Header />}
 
-      <div className="w-full">
-        <Body />
-      </div>
-
-      <div className="w-full">
-        <HourlyTempCard />
-      </div>
-
-      <div className="w-full flex flex-col gap-4 sm:flex-row sm:gap-6 justify-between">
-        <div className="w-full sm:w-1/2">
-          <DaysTempCard />
+      {cityWeather && (
+        <div className="w-full">
+          <DashBody weather={cityWeather} name={cityName} />
         </div>
+      )}
 
-        <div className="w-full sm:w-1/2">
-          <div className="mb-3">
-            <ShortData />
+      {cityWeather && (
+        <div className="w-full">
+          <DashHourlyTempCard weather={cityWeather} name={cityName} />
+        </div>
+      )}
+
+      {cityWeather && (
+        <div className="w-full flex flex-col gap-4 sm:flex-row sm:gap-6 justify-between">
+          <div className="w-full sm:w-1/2">
+            <DashDaysTempCard weather={cityWeather} />
           </div>
-          <div>
-            <LineChart />
+
+          <div className="w-full sm:w-1/2">
+            <div className="mb-3">
+              <DashShortData weather={cityWeather} />
+            </div>
+            <div>
+              <LineChart />
+            </div>
           </div>
         </div>
-      </div>
-
-      <h1 className="text-lg md:text-xl lg:text-2xl font-bold text-center mt-4">
-        Landing Page
-      </h1>
-
-      <button className="bg-pink-500 text-white rounded-full p-4 hover:bg-pink-600 transition-colors duration-300 mt-4">
-        <Link to="/">Go to Landing</Link>
-      </button>
+      )}
     </div>
   );
 };
 
-export default Landing;
+export default Dashboard;
