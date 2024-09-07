@@ -14,9 +14,9 @@ const HourlyTempCard = () => {
       <hr className="h-1 rounded-full" />
       <div className="overflow-x-auto no-scrollbar mt-2">
         <div className="flex gap-2 px-1">
-          {hours.map((hour) => (
+          {hours.map((hour, index) => (
             <div
-              key={hour}
+              key={index}
               className="flex flex-col justify-center items-center py-3 px-4 gap-2 bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl">
               
               <p className="min-w-11">

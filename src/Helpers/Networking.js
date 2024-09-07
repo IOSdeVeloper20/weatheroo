@@ -1,3 +1,5 @@
+import { baseURL } from "./Constants";
+
 export async function fetchData(url) {
   try {
     const response = await fetch(url);
@@ -13,3 +15,8 @@ export async function fetchData(url) {
     throw error;
   }
 }
+
+export const fetchCityWeatherData = async (lat, long) => {
+  const formattedURL = `${baseURL}${lat},${long}`;
+  return fetchData(formattedURL);
+};

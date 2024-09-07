@@ -16,9 +16,9 @@ const DaysTempCard = () => {
       <hr className="h-1 rounded-full" />
 
       <div className="flex flex-col gap-2 mt-2">
-        {days.map((day) => (
+        {days.map((day, index) => (
           <div
-            key={day}
+            key={index}
             className="flex justify-evenly items-center p-2 bg-white/5 backdrop-blur-lg border border-white/10 shadow-sm rounded-lg">
             <div className="flex flex-wrap justify-between w-full">
               <p>{getDayName(day.date, "en-US")}</p>
