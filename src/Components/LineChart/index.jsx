@@ -11,9 +11,6 @@ const LineChart = ({ weather }) => {
     y: item.avgtempC,
   }));
 
-  const arrayt = ["today", "Sun", "Mon", "Tue", "Wed"];
-
-  // Function to create and update the chart
   const updateChart = () => {
     const svg = d3.select(svgRef.current);
     const container = svgRef.current.parentElement;
@@ -65,20 +62,12 @@ const LineChart = ({ weather }) => {
       .tickFormat((d) => d)
       .tickSize(6);
 
-    const yAxis = d3
-      .axisLeft(yScale)
-      .ticks(7)
-      .tickFormat((d) => d + "°")
-      .tickSize(6);
-
     // // Draw axes
     svg
       .append("g")
       .call(xAxis)
       .attr("transform", `translate(0,${height})`)
       .attr("class", "x-axis");
-
-    // svg.append("g").call(yAxis).attr("class", "y-axis");
 
     // Draw line
     const path = svg
@@ -119,7 +108,7 @@ const LineChart = ({ weather }) => {
       .enter()
       .append("text")
       .attr("class", "data-labels")
-      .attr("x", (d) => xScale(d.x) + xScale.bandwidth() / 4) // Center the label on the circle
+      .attr("x", (d) => xScale(d.x) + xScale.bandwidth() / 2) // Center the label on the circle
       .attr("y", (d) => yScale(d.y) - 10) // Position the label above the circle
       .attr("text-anchor", "middle") // Center text horizontally
       .text((d) => d.y) // Label text (temperature)
@@ -157,3 +146,11 @@ const LineChart = ({ weather }) => {
 };
 
 export default LineChart;
+
+// const yAxis = d3
+//   .axisLeft(yScale)
+//   .ticks(7)
+//   .tickFormat((d) => d + "°")
+//   .tickSize(6);
+
+// svg.append("g").call(yAxis).attr("class", "y-axis");
