@@ -26,7 +26,7 @@ const DaysTempCard = () => {
             className="flex justify-evenly items-center p-2 bg-white/5 backdrop-blur-lg border border-white/10 shadow-sm rounded-lg">
             <div className="flex flex-wrap justify-between w-full">
               <p>{getDayName(day.date, "en-US")}</p>
-              <div className="flex items-center w-full justify-evenly sm:w-3/4">
+              <div className="flex items-center pt-2 w-full justify-evenly sm:w-3/4 sm:pt-0">
                 <img
                   src={day.hourly[0].weatherIconUrl[0].value}
                   alt="Daily Conditions"

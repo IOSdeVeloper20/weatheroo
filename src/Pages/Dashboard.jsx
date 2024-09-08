@@ -38,7 +38,7 @@ const Dashboard = () => {
               <DashShortData weather={cityWeather} />
             </div>
             <div>
-              <LineChart />
+              <LineChart weather={cityWeather} />
             </div>
           </div>
         </div>
