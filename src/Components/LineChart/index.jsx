@@ -1,5 +1,5 @@
 import * as d3 from "d3";
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useCallback } from "react";
 import { getDayName } from "../../Helpers/Date";
 
 const LineChart = ({ weather }) => {
@@ -11,7 +11,7 @@ const LineChart = ({ weather }) => {
     y: item.avgtempC,
   }));
 
-  const updateChart = () => {
+  const updateChart = useCallback(() => {
     const svg = d3.select(svgRef.current);
     const container = svgRef.current.parentElement;
     const margin = { top: 20, right: 20, bottom: 30, left: 50 };
@@ -36,7 +36,6 @@ const LineChart = ({ weather }) => {
     const yScale = d3
       .scaleLinear()
       .domain([0, 70]) // Use maximum temperature for y-axis domain
-      .nice()
       .range([height, 0]);
 
     // Line generator
@@ -114,7 +113,7 @@ const LineChart = ({ weather }) => {
       .text((d) => d.y) // Label text (temperature)
       .style("font-size", "12px") // Font size
       .style("fill", "black"); // Font color
-  };
+  }, [daysData]);
 
   useEffect(() => {
     // Initial chart rendering
@@ -131,7 +130,7 @@ const LineChart = ({ weather }) => {
     return () => {
       window.removeEventListener("resize", handleResize);
     };
-  }, [daysData]); // Dependencies: update the chart when data changes
+  }, [updateChart]); // Dependencies: update the chart when data changes
 
   return (
     <div className="bg-white/25 backdrop-blur-lg border border-white/60 rounded-xl p-2 flex flex-col items-center">
