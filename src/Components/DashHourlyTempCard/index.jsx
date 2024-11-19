@@ -17,7 +17,7 @@ const DashHourlyTempCard = ({ weather }) => {
               key={index}
               className="flex flex-col justify-center items-center py-3 px-4 gap-2 bg-white/5 backdrop-blur-lg border border-white/10 rounded-xl">
               <p className="min-w-11">
-                {hour.time / 100 === 0 ? "Now" : hour.time / 100}
+                {hour.time / 100 === 0 ? "0" : hour.time / 100}
               </p>
 
               <img
